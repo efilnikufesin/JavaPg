@@ -2,7 +2,7 @@
 class countSpeeds {
     public static void main(String[] args) {
         Spaceship[] obj = new Spaceship[3];
-        double sum = 0;
+        int sum = 0;
         String minName = "";
         obj[0] = new Spaceship(888, "Icarus2");
         obj[1] = new Spaceship(123, "LewisAndClark");
