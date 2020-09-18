@@ -2,25 +2,31 @@ import java.awt.*;
 import java.util.Random;
 
 interface Shape{
-    void getPerimiter(String figure, double a,double b, double c);
+    void getPerimiter(int indx);
 }
 
 class Quickmaths{
     public static void main(String[] args) {
-        RandomFigs figures = new RandomFigs();
-        String[] listfigures = figures.getRandom();
-        for (int i = 0; i < listfigures.length; i++){
-            Random r = new Random();
-            double a = 10*r.nextDouble();
-            double b = 10*r.nextDouble();
-            double c = 10*r.nextDouble();
-            figures.getPerimiter(listfigures[i],a,b,c);
-            figures.printState();
+        RandomFigs figlist = new RandomFigs();
+        String[] figures = figlist.getRandom();
+        for(int i=0;i < figures.length;i++) {
+            if (figures[i] == "Triangle"){
+                Triangle triangle = new Triangle();
+                triangle.getPerimiter(i);
+            }
+            if (figures[i] == "Rectangle"){
+                Rectangle rectangle = new Rectangle();
+                rectangle.getPerimiter(i);
+            }
+            if (figures[i] == "Circle"){
+                Circle circle = new Circle();
+                circle.getPerimiter(i);
+            }
         }
     }
 }
-class RandomFigs implements Shape{
-    String figurePerimiter;
+
+class RandomFigs{
     private String[] figlist = new String[10];
     private String[] figs = {"Triangle", "Circle", "Rectangle"};
     public String[] getRandom() {
@@ -30,21 +36,35 @@ class RandomFigs implements Shape{
         }
         return figlist;
     }
+}
+
+class Triangle implements Shape {
+    Random r = new Random();
+    double a = 10*r.nextDouble();
+    double b = 10*r.nextDouble();
+    double c = 10*r.nextDouble();
     @Override
-    public void getPerimiter(String figure, double a, double b, double c) {
-        if (figure == "Circle") {
-            double p = 2*a*3.14;
-            figurePerimiter = figure + " equals to" + p;
-        }
-        if (figure == "Rectangle"){
-            double p = a+b+c;
-            figurePerimiter = figure + " equals to " + p;
-        }else {
-            double p = 2*(a+b);
-            figurePerimiter = figure + " equals to " + p;
-        }
+    public void getPerimiter(int indx){
+        double p = a+b+c;
+        System.out.println("Triangle number " + indx + " perimiter equals " + p);
     }
-    public void printState() {
-        System.out.println("Perimiter for " + figurePerimiter);
+}
+class Rectangle implements Shape {
+    Random r = new Random();
+    double a = 10*r.nextDouble();
+    double b = 10*r.nextDouble();
+    @Override
+    public void getPerimiter(int indx){
+        double p = 2*(a+b);
+        System.out.println("Rectangle number " + indx + " perimiter equals " + p);
+    }
+}
+class Circle implements Shape {
+    Random r = new Random();
+    double a = 10*r.nextDouble();
+    @Override
+    public void getPerimiter(int indx){
+        double p = 3.14*2*a;
+        System.out.println("Circle number " + indx + " perimiter equals " + p);
     }
 }
