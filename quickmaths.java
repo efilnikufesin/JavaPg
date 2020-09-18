@@ -46,7 +46,7 @@ class Triangle implements Shape {
     @Override
     public void getPerimiter(int indx){
         double p = a+b+c;
-        System.out.println("Triangle number " + indx + " perimiter equals " + p);
+        System.out.println("Figure number " + indx + " is Triangle and it's perimiter equals " + p);
     }
 }
 class Rectangle implements Shape {
@@ -56,7 +56,7 @@ class Rectangle implements Shape {
     @Override
     public void getPerimiter(int indx){
         double p = 2*(a+b);
-        System.out.println("Rectangle number " + indx + " perimiter equals " + p);
+        System.out.println("Figure number " + indx + " is Rectangle and it's perimiter equals " + p);
     }
 }
 class Circle implements Shape {
@@ -65,6 +65,6 @@ class Circle implements Shape {
     @Override
     public void getPerimiter(int indx){
         double p = 3.14*2*a;
-        System.out.println("Circle number " + indx + " perimiter equals " + p);
+        System.out.println("Figure number " + indx + " is Circle and it's perimiter equals " + p);
     }
 }
